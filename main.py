@@ -1,7 +1,9 @@
 from fastapi import FastAPI
+import starlette.responses as _responses
+
 app = FastAPI()
 
 
 @app.get("/")
 async def root():
-    return {"greeting": "Hello world"}
+    return _responses.RedirectResponse("/redoc")
