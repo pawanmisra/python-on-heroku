@@ -39,6 +39,7 @@ if DATABASE_URL.startswith("sqlite"):
         DATABASE_URL, connect_args={"check_same_thread": False}
     )
 else:
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
     engine = sqlalchemy.create_engine(
         DATABASE_URL, pool_size=3, max_overflow=0
     )
